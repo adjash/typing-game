@@ -1,6 +1,9 @@
 console.log('all start somewhere');
 let gameWords = null;
 
+let userScore = 0;
+let scoreOutput = document.querySelector('.game__score');
+
 
 let wordWrapper = document.querySelector('.word__container');
 
@@ -43,16 +46,20 @@ gameInput.addEventListener('click', function(e){
 
 function isCorrect(actualWord, comparitorWord){
     if(actualWord === comparitorWord){
-        console.log('correct');
+        //Increment userScore to reflect correct words
+        userScore = userScore + 1;
+        scoreOutput.innerHTML = userScore;
+
+        //clear input field
         gameInput.value = '';
+
+        //Remove our old word
         let oldFirstWord = document.querySelector('.active__word');
-
         oldFirstWord.classList.add('green');
-
         oldFirstWord.remove();
         
+        //Set our new 'active' word
         let newFirstWord = document.querySelectorAll('.game__word');
-        //Set our 'active' word
         newFirstWord[0].classList.add('active__word');
     }else {
         let oldFirstWord = document.querySelector('.active__word');
