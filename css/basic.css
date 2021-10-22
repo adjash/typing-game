@@ -1,0 +1,12 @@
+input[type="text"]{
+    border: 1px solid lightgray;
+}
+
+.word__container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+}
+.game__word {
+    padding: 0 5px;
+}
