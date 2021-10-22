@@ -22,21 +22,43 @@ fetchGameWords().then(words => {
         individualWord.innerHTML = word;
         wordWrapper.appendChild(individualWord);
     });
-});
-
-
- let gameInput = document.querySelector('#game__input');
-gameInput.addEventListener('click', function(e){
     let firstWord = document.querySelectorAll('.game__word');
     //Set our 'active' word
     firstWord[0].classList.add('active__word');
+});
 
+
+let gameInput = document.querySelector('#game__input');
+gameInput.addEventListener('click', function(e){
     document.addEventListener('keyup', event => {
-        if (event.code === 'Space') {
-            
+        //|On space up, compare current value to the .active__word, if
+        if (event.code === 'Space' || event.code === 'Enter') {
+            isCorrect(document.querySelector('.active__word').innerText.trim(), gameInput.value.trim());
         }
         console.log(gameInput.value);
     });
 });
+
+
+
+function isCorrect(actualWord, comparitorWord){
+    if(actualWord === comparitorWord){
+        console.log('correct');
+        gameInput.value = '';
+        let oldFirstWord = document.querySelector('.active__word');
+
+        oldFirstWord.classList.add('green');
+
+        oldFirstWord.remove();
+        
+        let newFirstWord = document.querySelectorAll('.game__word');
+        //Set our 'active' word
+        newFirstWord[0].classList.add('active__word');
+    }else {
+        let oldFirstWord = document.querySelector('.active__word');
+        oldFirstWord.classList.add('red');
+        console.log('incorrect')
+    }
+}
 
 

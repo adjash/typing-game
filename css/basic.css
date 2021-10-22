@@ -10,3 +10,12 @@ input[type="text"]{
 .game__word {
     padding: 0 5px;
 }
+.active__word{
+    background-color: lightgray;
+}
+.red {
+    background: red;
+}
+.green {
+    background: green;
+}
