@@ -9,6 +9,9 @@ input[type="text"]{
     flex-wrap: wrap;
     justify-content: flex-start;
     margin-top: 20px;
+    position: relative;
+    height: 30px;
+    overflow:hidden;
 }
 .game__word {
     padding: 5px 5px;
@@ -21,4 +24,11 @@ input[type="text"]{
 }
 .green {
     background: green;
+}
+.word__container::after{
+    content: "";
+    width: 100%;
+    bottom: 0;
+    position: absolute;
+    background: white;
 }
